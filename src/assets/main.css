@@ -1,0 +1,166 @@
+@import './base.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  font-weight: normal;
+}
+
+.router-link-active {
+  color: white;
+}
+
+.home-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  font-size: 20px;
+  margin-top: 15vh;
+
+  .amount-input {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    color: darkslategray;
+
+    input {
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: solid lightgray 1px;
+      font-size: 16px;
+    }
+  }
+
+  .coins-selectors {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    max-width: 400px;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+      color: darkslategray;
+
+      select,
+      input {
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 8px;
+        border: solid lightgray 1px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.result-info {
+  border: solid lightgray 1px;
+  background-color: lightcyan;
+  padding: 20px;
+}
+
+.convert-btn {
+  background-color: #609cf1;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.convert-btn:hover {
+  background-color: #84c7fb;
+}
+
+.convert-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 5vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+
+  padding: 10px;
+  background-color: #a4cbe7;
+  margin-bottom: 10px;
+
+  align-items: baseline;
+
+  .header-nav {
+    display: flex;
+    gap: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    max-height: 100%;
+
+    a {
+      color: darkslategray;
+      transition: color 0.5s ease;
+    }
+
+    a:hover {
+      color: lightyellow;
+      font-weight: 600;
+    }
+  }
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5vh;
+
+  padding: 10px;
+  background-color: #a4cbe7;
+
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  .footer-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hide nav in header */
+  header .header-nav {
+    display: none;
+  }
+
+  /* Show nav in footer */
+  footer .footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    a {
+      color: darkslategray;
+      transition: color 0.5s ease;
+    }
+    a:hover {
+      color: lightyellow;
+      font-weight: 600;
+    }
+  }
+
+  footer .footer-text {
+    display: none;
+  }
+}
