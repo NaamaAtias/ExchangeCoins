@@ -1,29 +1,93 @@
-# currency_exchange_app
+# 💱 Coin Converter App
 
-This template should help get you started developing with Vue 3 in Vite.
+אפליקציה אינטראקטיבית להמרת מטבעות בזמן אמת — בין מטבעות קריפטוגרפיים ומטבעות נפוצים כמו דולר, אירו ושקל.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 🎯 מה עושה המערכת?
 
-## Customize configuration
+- מאפשרת לבחור **מטבע מקור** ו־**מטבע יעד** מתוך רשימה של 10 מטבעות.
+- מאפשרת להזין **סכום להמרה**.
+- מבצעת המרה מדויקת לפי שער עדכני באמצעות ממשק CoinPaprika.
+- תוצאת ההמרה מוצגת רק לאחר לחיצה על כפתור (ולא עם כל שינוי).
+- התוצאה נשמרת ב־`localStorage` בצד הלקוח כדי להימנע מקריאות מיותרות לשרת.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+---
 
-## Project Setup
+## 🛠 טכנולוגיות בשימוש
 
-```sh
-npm install
+- **Frontend**: Vue.js
+- **Backend**: ASP.NET Core Web API
+- **API צד שלישי**: [CoinPaprika](https://api.coinpaprika.com/)
+- **אחסון מקומי**: `localStorage`
+
+---
+
+## 🔌 דוגמה לכתובת API
+
+```http
+GET /api/convert?amount=1&baseCoin=btc&quoteCoin=eth
 ```
 
-### Compile and Hot-Reload for Development
+---
 
-```sh
+## ⚙️ איך משתמשים בפרויקט
+
+### 1. הרצת השרת (Backend - C#)
+```bash
+cd CoinConverterApi
+dotnet run
+```
+
+ברירת מחדל: השרת יאזין בכתובת:
+```
+http://localhost:5000
+```
+
+---
+
+### 2. הרצת ה-Frontend (Vue)
+```bash
+npm install
 npm run dev
 ```
 
-### Compile and Minify for Production
-
-```sh
-npm run build
+ברירת מחדל: האפליקציה תיפתח בכתובת:
 ```
+http://localhost:5173
+```
+
+---
+
+## 📤 תוצאה לדוגמה
+
+```
+1 BTC = 15.5 ETH
+```
+
+---
+
+## 🧠 אחסון מקומי
+
+המרות שבוצעו נשמרות בזיכרון הדפדפן (`localStorage`) לפי מבנה מפתח ייחודי:
+
+```
+amount:1, from btc, to eth
+```
+
+כך ניתן למנוע שליחה כפולה לשרת עבור אותה בקשה.
+
+---
+
+## 🔮 שיקולים לפיתוח עתידי
+
+- ✅ **אחסון במסד נתונים** — אם היה זמן נוסף, היה עדיף לאחסן את היסטוריית ההמרות במסד נתונים אמיתי.
+- ✅ **ניהול מצב בעזרת Store** — כרגע הנתונים מנוהלים ברמת קומפוננטה, אך Store גלובלי כמו Vuex או Pinia יאפשר ניהול מסודר וטוב יותר.
+- ❌ **בעיית CORS** — קיימת בעיית CORS בין ה־Frontend ל־Backend שלא נפתרה עד הסוף. הפתרון דורש עבודה נוספת בצד השרת (הוספת מקור מותר או ניהול יותר גמיש של הכותרות).
+- 🧩 **עבודה עם C#** — כחלק מתהליך הפיתוח, נתקלתי בקושי בעבודה עם ASP.NET Core (שפה שאינני מנוסה בה), מה שגזל זמן רב, ולמרות ההשקעה, בעיית התקשורת מול ה־Frontend לא נפתרה במלואה.
+
+---
+
+## 🙏 סיכום אישי
+
+למרות הקשיים בעבודה עם צד השרת, האפליקציה מציגה חוויית משתמש טובה, מבצעת המרה מדויקת של מטבעות בזמן אמת, וכוללת תכנון נכון לקראת שיפור עתידי של מבנה המידע והקוד.
